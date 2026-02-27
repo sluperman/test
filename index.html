@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hostel Inventory Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>🏠 Hostel Inventory Manager</h1>
+      <p>Track sports, gym, books, furniture, and other hostel items.</p>
+    </header>
+
+    <main class="container layout">
+      <section class="card">
+        <h2>Add Item</h2>
+        <form id="item-form" class="form-grid">
+          <label>
+            Item Name
+            <input id="name" type="text" required placeholder="e.g., Football" />
+          </label>
+          <label>
+            Category
+            <select id="category" required>
+              <option value="Sports">Sports</option>
+              <option value="Gym">Gym</option>
+              <option value="Books">Books</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <label>
+            Quantity
+            <input id="quantity" type="number" min="1" value="1" required />
+          </label>
+          <label>
+            Location
+            <input id="location" type="text" placeholder="e.g., Room A Storage" />
+          </label>
+          <button type="submit">Add Item</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Inventory Overview</h2>
+        <div class="filters">
+          <label>
+            Search
+            <input id="search" type="text" placeholder="Search by name or location" />
+          </label>
+          <label>
+            Filter by Category
+            <select id="category-filter">
+              <option value="All">All</option>
+              <option value="Sports">Sports</option>
+              <option value="Gym">Gym</option>
+              <option value="Books">Books</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="stats" class="stats"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Available</th>
+                <th>Issued</th>
+                <th>Location</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="row-template">
+      <tr>
+        <td class="item-name"></td>
+        <td class="item-category"></td>
+        <td class="item-available"></td>
+        <td class="item-issued"></td>
+        <td class="item-location"></td>
+        <td class="actions">
+          <button class="issue">Issue</button>
+          <button class="return">Return</button>
+          <button class="delete danger">Delete</button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
